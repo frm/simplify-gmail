@@ -1,0 +1,13 @@
+{
+  "name": "gmail",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "babel simplify -d dist"
+  },
+  "author": "Fernando Mendes <fernando@mendes.codes>",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
