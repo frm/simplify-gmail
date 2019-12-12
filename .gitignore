@@ -1,1 +1,4 @@
 node_modules
+darwin-*
+dist/
+Gmail-*

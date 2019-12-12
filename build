@@ -35,7 +35,7 @@ nativefier "https://mail.google.com/mail" \
    --arch "x64" \
    --electron-version 2.0.2 \
    --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' \
-   --internal-urls ".*accounts .google.com.*" \
+   --internal-urls "(.*accounts.google.com.*|.*mail.google.com.*)" \
    -i imgs/gmail.icns \
    --inject dist/style.css \
    --inject dist/script.js
