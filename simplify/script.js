@@ -1765,6 +1765,27 @@ function observeHead() {
 }
 observeHead();
 
+let anchorTargetRemoval = 0;
+
+function removeAllAnchorTargets() {
+  const anchorsWithTarget = Array.from(
+    document.querySelectorAll('a[target="_blank"]')
+  );
+
+  if (anchorTargetRemoval < 5) {
+    anchorsWithTarget.forEach(link => link.removeAttribute("target"));
+    anchorTargetRemoval++;
+
+    // Some elements get loaded in after the page is done loading
+    setTimeout(removeAllAnchorTargets, 3000);
+  }
+}
+
+function setupAnchorTargetRemoval() {
+  window.addEventListener("readystatechange", removeAllAnchorTargets, false);
+  removeAllAnchorTargets();
+}
+
 function addDraggableArea() {
   const dragArea = document.createElement("div");
   dragArea.style.position = "relative";
@@ -1778,11 +1799,18 @@ function addDraggableArea() {
   window.document.body.appendChild(dragArea);
 }
 
+// Add custom overrides for the nativefier version here
+function runCustomOverrides() {
+  setupAnchorTargetRemoval();
+  addDraggableArea();
+}
+
 // Initialize search as soon as DOM is ready
 function initOnDomReady() {
   initSearch();
   initSearchFocus();
-  addDraggableArea();
+
+  runCustomOverrides();
 }
 
 // Initialize everything else when the page is ready
